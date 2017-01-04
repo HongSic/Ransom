@@ -49,12 +49,14 @@
             <div class="form-group"> 
             	<input type="submit" class="col-sm-4 pul-right btn btn-block btn-default" value="{{ __('Login') }}">
             </div>
-            <div class="form-group">
-                <p class="text-muted text-xs-center">
-                	{{ __("Do not have an account") }}? 
-                	<a href="{{ action('AuthController@getSignup') }}">{{ __("Sign Up!") }}</a>
-                </p>
-            </div>
+            @if(ENV('ENABLE_REGISTRATION') === true)
+                <div class="form-group">
+                    <p class="text-muted text-xs-center">
+                    	{{ __("Do not have an account") }}? 
+                    	<a href="{{ action('AuthController@getSignup') }}">{{ __("Sign Up!") }}</a>
+                    </p>
+                </div>
+            @endif;
         </form>
     </div>
 </div>

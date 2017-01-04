@@ -11,11 +11,23 @@ class AuthController extends Controller
 
     public function getSignup()
     {
+        // enable or disable registration
+        if(ENV('ENABLE_REGISTRATION') === false)
+        {
+            return redirect()->action('AuthController@getSignin')->with('error', 'Registration is disabled.');
+        }
+
         return View('pages.auth.sign-up');
     }
 
     public function postSignup(Request $request)
     {
+        // enable or disable registration
+        if(ENV('ENABLE_REGISTRATION') === false)
+        {
+            return redirect()->action('AuthController@getSignin')->with('error', 'Registration is disabled.');
+        }
+
         $this->validate($request, [
             "username" => "required|unique:users",
             "email" => "email|unique:users|required",
