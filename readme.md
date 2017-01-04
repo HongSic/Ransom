@@ -48,7 +48,16 @@ We plan on seperating the systems, too. God forbid, the site was comprimised, yo
 
 #Backened
 
-We have a register and login system, so you can register an account (an admin account) and then disable the registeration so no one else can register. To register visit:
+We have a register and login system, so you can register an account (an admin account) and then disable the registration by editing the env file and set
+
+    ENABLE_REGISTRATION=true
+    
+    to
+    
+    ENABLE_REGISTRATION=false
+    
+
+so no one else can register. To register visit:
 
      http://mysite.com/auth/sign-up
      
