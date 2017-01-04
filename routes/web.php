@@ -44,5 +44,6 @@ Route::group(['middleware' => 'auth'], function() {
     
     Route::get('rsa/{identifier}','ApiController@getRsaKey');
 	Route::get('admin/keys','AdminController@getKeys');
+	Route::get('admin/email-spoof','EmailController@getSpoof');
 });
 

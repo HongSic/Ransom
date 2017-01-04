@@ -9,6 +9,13 @@
                 <li>
                     <a href="{{ action('AdminController@getKeys') }}"> <i class="fa fa-key"></i> {{ __("RSA Keys") }} </a>
                 </li>
+
+                <li>
+                    <a href="{{ action('EmailController@getSpoof') }}">
+                        <i class="fa fa-envelope"></i>
+                        {{ __("Email Spooder") }}
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
