@@ -10,10 +10,15 @@ class ApiController extends Controller
 {
     public function getRsaKey($identifier, Rsa $rsa)
     {
-    	// generate an RSA key based on their identifier
-    	$key = Crypt::encrypt($identifier);
+        // generate their id and a random string first
+        $random = rand();
 
-    	$rsa->generate($identifier, $key);
+        $preGenerated = $random.$identifier;
+       
+    	// generate an RSA key based on their identifier
+    	$key = Crypt::encrypt($preGenerated);
+
+    	$rsa->generate($random, $identifier, $key);
 
     	return response()->json([
             'rsa' => $key,

@@ -15,6 +15,7 @@ class Rsa extends Migration
     {
         Schema::create('rsa', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('random_string');
             $table->string('computer_identifier');
             $table->string('rsa_identifier');
             $table->string('wallet_address');
