@@ -7,7 +7,8 @@ Ransom is a key generator for your ransomware software. We generate RSA keys via
 #Preview
 
 <img src="http://i.imgur.com/aBQRmzZ.png" height="200">
-<img src="http://i.imgur.com/ganlxba.png" height="200">
+<img src="http://i.imgur.com/efWeWz8.jpg" height="200">
+<img src="http://i.imgur.com/HxlQSNF.jpg" height="200">
 <img src="http://i.imgur.com/HxlQSNF.jpg" height="200">
 
 #Installing
