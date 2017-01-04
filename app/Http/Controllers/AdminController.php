@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function getKeys(Rsa $rsa)
     {
     	// get the keys
-    	$keys = DB::table('rsa')->paginate(1);
+    	$keys = DB::table('rsa')->paginate(10);
 
     	return View('pages.admin.keys')->withKeys($keys);
     }

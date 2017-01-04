@@ -18,6 +18,7 @@ Route::get('/', 'AuthController@getSignin');
  * ------------------
  */
 
+
 Route::group(['prefix' => 'auth'], function() {
     
     Route::get('sign-in', 'AuthController@getSignin');
@@ -39,7 +40,9 @@ Route::group(['prefix' => 'payment'], function() {
 
 });
 
-Route::get('rsa/{identifier}','ApiController@getRsaKey');
+Route::group(['middleware' => 'auth'], function() {
+    
+    Route::get('rsa/{identifier}','ApiController@getRsaKey');
+	Route::get('admin/keys','AdminController@getKeys');
+});
 
-
-Route::get('admin/keys','AdminController@getKeys');

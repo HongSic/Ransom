@@ -46,14 +46,6 @@
             	<input type="password" class="form-control underlined" name="password" placeholder="{{ __('Your password') }}" value="{{ Request::old('password') }}"> 
             	{!! $errors->first('password', '<p class="has-danger form-control-feedback">:message</p>') !!}
             </div>
-            
-            <div class="form-group"> 
-            	<label for="remember">
-					<input class="checkbox" id="remember" type="checkbox"> 
-					<span>{{ __("Remember me") }}</span>
-				</label> 
-				<a href="reset.html" class="forgot-btn pull-right">{{ __("Forgot password?") }}</a> 
-			</div>
             <div class="form-group"> 
             	<input type="submit" class="btn btn-block btn-primary" value="{{ __('Login') }}">
             </div>
