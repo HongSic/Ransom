@@ -24,7 +24,10 @@
                 </a>
                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html"> <i class="fa fa-power-off icon"></i> Logout </a>
+                    <a class="dropdown-item" href="{{ action('AuthController@getLogout') }}"> 
+                        <i class="fa fa-power-off icon"></i> 
+                        {{ __("Logout") }}
+                    </a>
                 </div>
             </li>
         </ul>

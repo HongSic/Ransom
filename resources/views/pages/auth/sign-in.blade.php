@@ -47,7 +47,7 @@
             	{!! $errors->first('password', '<p class="has-danger form-control-feedback">:message</p>') !!}
             </div>
             <div class="form-group"> 
-            	<input type="submit" class="btn btn-block btn-primary" value="{{ __('Login') }}">
+            	<input type="submit" class="col-sm-4 pul-right btn btn-block btn-default" value="{{ __('Login') }}">
             </div>
             <div class="form-group">
                 <p class="text-muted text-xs-center">
