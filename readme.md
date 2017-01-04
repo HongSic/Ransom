@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/zShH9AO.png"></p>
+<p align="center"><img src="http://i.imgur.com/rOfZKeB.png" height="300"></p>
 
 # About Ransom
 
